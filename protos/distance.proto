@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package distance;
+
+service RouteGuide {
+    rpc GetDistance (Words) returns (Distance);
+}
+
+message Words {
+    string word1 = 1;
+    string word2 = 2;
+}
+
+message Distance {
+    int64 distance = 1;
+}
