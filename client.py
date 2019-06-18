@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import logging
 
 import grpc
@@ -10,7 +12,7 @@ GRPC_PORT = 50051
 def get_distance(stub, word1, word2):
     words = distance_pb2.Words(word1=word1, word2=word2)
     result: distance_pb2.Distance = stub.GetDistance(words)
-    print(f"distance between {word1} and {word2} is {result.distance}")
+    logging.info(f"Word distance between {word1} and {word2} is {result.distance}")
 
 
 def run():
@@ -23,5 +25,5 @@ def run():
 
 
 if __name__ == "__main__":
-    logging.basicConfig()
+    logging.basicConfig(level=logging.INFO)
     run()
