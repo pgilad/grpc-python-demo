@@ -4,11 +4,13 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![Build Status](https://travis-ci.org/pgilad/grpc-python-demo.svg?branch=master)](https://travis-ci.org/pgilad/grpc-python-demo)
 
-This is a minimal playable demo I did in order to learn gRPC. It involves a server with 
+This is a minimal playable demo I did in order to learn gRPC. It involves a server with
 a single entry RPC for calculating the Levenshtein distance between 2 words.
 
 This demo includes a server and a client. The server is long-living (until stopped) and the
 client runs several pre-defined RPC calls with different words.
+
+[![asciicast](https://asciinema.org/a/l65iY1aDzDgfqXkSscaMaWC6B.svg)](https://asciinema.org/a/l65iY1aDzDgfqXkSscaMaWC6B)
 
 ## Requirements
 
