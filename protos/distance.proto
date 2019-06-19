@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package distance;
 
-service RouteGuide {
+service WordsHelper {
     rpc GetDistance (Words) returns (Distance);
 }
 

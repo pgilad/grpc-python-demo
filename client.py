@@ -17,7 +17,7 @@ def get_distance(stub, word1, word2):
 
 def run():
     with grpc.insecure_channel(f"localhost:{GRPC_PORT}") as channel:
-        stub = distance_pb2_grpc.RouteGuideStub(channel)
+        stub = distance_pb2_grpc.WordsHelperStub(channel)
         get_distance(stub, "gilad", "gil")
         get_distance(stub, "gilad", "giles")
         get_distance(stub, "tommy", "thomas")

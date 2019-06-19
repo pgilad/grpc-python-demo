@@ -3,7 +3,6 @@
 import logging
 import time
 from concurrent.futures.thread import ThreadPoolExecutor
-from logging import Logger
 
 import Levenshtein._levenshtein
 import grpc
@@ -13,13 +12,9 @@ from distance import distance_pb2_grpc, distance_pb2
 GRPC_PORT = 50051
 
 
-class RouteGuideServicer(distance_pb2_grpc.RouteGuideServicer):
-    logger: Logger
-
+class WordsHelperServicer(distance_pb2_grpc.WordsHelperServicer):
     def __init__(self) -> None:
-        super().__init__()
-        self.logger = logging.getLogger(self.__class__.__name__)
-        logging.info(f"Bootstrapping {__class__.__name__}")
+        logging.info(f"Bootstrapping")
 
     def GetDistance(self, request, context):
         word1, word2 = request.word1, request.word2
@@ -30,7 +25,7 @@ class RouteGuideServicer(distance_pb2_grpc.RouteGuideServicer):
 
 def serve():
     server = grpc.server(ThreadPoolExecutor(max_workers=10))
-    distance_pb2_grpc.add_RouteGuideServicer_to_server(RouteGuideServicer(), server)
+    distance_pb2_grpc.add_WordsHelperServicer_to_server(WordsHelperServicer(), server)
     server.add_insecure_port(f"[::]:{GRPC_PORT}")
     server.start()
     logging.info("Server starting..")
