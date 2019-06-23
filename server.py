@@ -22,6 +22,18 @@ class WordsHelperServicer(distance_pb2_grpc.WordsHelperServicer):
         d = Levenshtein._levenshtein.distance(word1, word2)
         return distance_pb2.Distance(distance=d)
 
+    def GetFibonacci(self, request, context):
+        logging.info(f"--> GetFibonacci Request")
+
+        yield distance_pb2.FibonacciNumber(number=0)
+        yield distance_pb2.FibonacciNumber(number=1)
+        i = 1
+        while i <= 1e6:
+            yield distance_pb2.FibonacciNumber(number=i)
+            i += i
+
+            time.sleep(0.2)
+
 
 def serve():
     server = grpc.server(ThreadPoolExecutor(max_workers=10))

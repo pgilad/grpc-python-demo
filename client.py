@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import logging
+import time
 
 import grpc
 
@@ -22,6 +23,11 @@ def run():
         get_distance(stub, "gilad", "giles")
         get_distance(stub, "tommy", "thomas")
         get_distance(stub, "yonathan", "jonathan")
+
+        request = distance_pb2.FibonacciRequest()
+        for result in stub.GetFibonacci(request):
+            logging.info(f"Got next fib number {result.number}")
+            time.sleep(0.2)
 
 
 if __name__ == "__main__":

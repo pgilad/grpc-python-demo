@@ -4,6 +4,10 @@ package distance;
 
 service WordsHelper {
     rpc GetDistance (Words) returns (Distance);
+    rpc GetFibonacci (FibonacciRequest) returns (stream FibonacciNumber);
+}
+
+message FibonacciRequest {
 }
 
 message Words {
@@ -13,4 +17,8 @@ message Words {
 
 message Distance {
     int64 distance = 1;
+}
+
+message FibonacciNumber {
+    int64 number = 1;
 }
